@@ -16,8 +16,9 @@ ARG ACTION_REF=main
 
 RUN apk add --no-cache git
 
-RUN git clone --depth 1 --branch "${ACTION_REF}" \
-    "https://github.com/${ACTION_REPO}.git" /build
+RUN git clone --filter=blob:none --no-checkout \
+    "https://github.com/${ACTION_REPO}.git" /build && \
+    cd /build && git checkout "${ACTION_REF}"
 
 WORKDIR /build
 
