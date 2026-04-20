@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode development --config webpack.common.js",
     "build:action": "webpack --mode production --config webpack.action.js",
-    "start": "yarn build && node index.js"
+    "build:prod": "webpack --config webpack.prod.js",
+    "start": "yarn build:prod && node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -25,9 +26,12 @@
     "compression": "^1.7.4",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.3.2",
     "filereader": "^0.10.3",
+    "helmet": "^8.1.0",
     "image-to-base64": "^2.2.0",
     "lodash": "^4.17.21",
+    "lru-cache": "^11.3.5",
     "node-fetch": "^3.3.2",
     "typescript": "^6.0.2"
   },
