@@ -12,30 +12,32 @@ import { fetchAllContributorStats } from '@/fetchAllContributorStats';
 import { isLocaleAvailable } from '@/translations';
 import express from 'express';
 import compression from 'compression';
+import { LRUCache } from 'lru-cache';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 
 const CACHE_TTL_MS = 3600000;
-const cache = new Map<string, { data: any; expires: number }>();
+const cache = new LRUCache<string, string>({
+  max: 100,
+  ttl: CACHE_TTL_MS,
+});
 
 const app = express();
-app.use((compression as any)());
+app.use(compression() as express.RequestHandler);
+app.use(helmet());
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: 'Too many requests from this IP, please try again later.',
+});
+app.use('/api', limiter);
 
-function getCached(key: string): any | null {
-  const cached = cache.get(key);
-  if (cached && cached.expires > Date.now()) {
-    return cached.data;
-  }
-  cache.delete(key);
-  return null;
+function getCached(key: string): string | null {
+  return cache.get(key) ?? null;
 }
 
-function setCache(key: string, data: any): void {
-  cache.set(key, { data, expires: Date.now() + CACHE_TTL_MS });
-  if (cache.size > 100) {
-    const oldestKey = cache.keys().next().value;
-    if (oldestKey) {
-      cache.delete(oldestKey);
-    }
-  }
+function setCache(key: string, data: string): void {
+  cache.set(key, data);
 }
 
 // Create GET request
@@ -114,8 +116,13 @@ app.get('/api', async (req, res) => {
     setCache(cacheKey, svg);
     res.setHeader('X-Cache', 'MISS');
     res.send(svg);
-  } catch (err: any) {
-    return res.send(renderError(err.message, err.secondaryMessage));
+  } catch (err: unknown) {
+    const error = err instanceof Error ? err : new Error(String(err));
+    const secondaryMessage =
+      err instanceof Error && 'secondaryMessage' in err
+        ? (err as Error & { secondaryMessage: string }).secondaryMessage
+        : undefined;
+    return res.send(renderError(error.message, secondaryMessage));
   }
 });
 
