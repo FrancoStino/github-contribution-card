@@ -126,8 +126,13 @@ app.get('/api', async (req, res) => {
   }
 });
 
-const port = 9999;
+// Export for Vercel serverless — @vercel/node uses this as the handler
+export default app;
 
-app.listen(port, () => {
-  console.log(`Express app listening on port ${port}`);
-});
+// Start server only in local development (Vercel ignores this in serverless)
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  const port = 9999;
+  app.listen(port, () => {
+    console.log(`Express app listening on port ${port}`);
+  });
+}

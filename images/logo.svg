@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+    <!-- Background -->
+    <rect x="16" y="16" width="480" height="480" rx="64" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+
+    <!-- GitHub silhouette -->
+    <g transform="translate(256, 180)" fill="#c9d1d9">
+        <circle cx="0" cy="0" r="48" fill="none" stroke="#c9d1d9" stroke-width="3"/>
+        <circle cx="-13" cy="-8" r="4"/>
+        <circle cx="13" cy="-8" r="4"/>
+        <path d="M-18,16 Q0,24 18,16" fill="none" stroke="#c9d1d9" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Bar chart -->
+    <g transform="translate(100, 270)">
+        <rect x="8" y="90" width="48" height="60" rx="4" fill="#58a6ff"/>
+        <rect x="72" y="50" width="48" height="100" rx="4" fill="#3fb950"/>
+        <rect x="136" y="10" width="48" height="140" rx="4" fill="#8b5cf6"/>
+        <rect x="200" y="70" width="48" height="80" rx="4" fill="#f78166"/>
+        <rect x="264" y="110" width="48" height="40" rx="4" fill="#d4a72c"/>
+    </g>
+</svg>
