@@ -76,5 +76,5 @@ outputs:
     description: 'Path to the generated SVG file'
 
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: 'docker'
+  image: 'Dockerfile'
