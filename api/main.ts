@@ -9,12 +9,35 @@ import {
 } from '@/common/utils';
 import { fetchContributorStats } from '@/fetchContributorStats';
 import { fetchAllContributorStats } from '@/fetchAllContributorStats';
-import { isLocaleAvailable } from '@/translations';
+import { isLocaleAvailable, availableLocales } from '@/translations';
+import { themes } from 'themes';
+import demoTemplate from './demo/template.html';
+import demoStyles from './demo/styles.css';
+import demoScript from './demo/client.script';
 import express from 'express';
 import compression from 'compression';
 import { LRUCache } from 'lru-cache';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+
+const THEME_NAMES = Object.keys(themes);
+const LOCALE_CODES = availableLocales as string[];
+
+function renderDemoPage(): string {
+  const themeOptions = THEME_NAMES.map((t) => `<option value="${t}">${t}</option>`).join(
+    '',
+  );
+
+  const localeOptions = LOCALE_CODES.map(
+    (l) => `<option value="${l}">${l}</option>`,
+  ).join('');
+
+  return demoTemplate
+    .replace('<!--PLACEHOLDER_CSS-->', demoStyles)
+    .replace('<!--PLACEHOLDER_JS-->', demoScript)
+    .replace('<!--PLACEHOLDER_THEME_OPTIONS-->', themeOptions)
+    .replace('<!--PLACEHOLDER_LOCALE_OPTIONS-->', localeOptions);
+}
 
 const CACHE_TTL_MS = 3600000;
 const cache = new LRUCache<string, string>({
@@ -24,7 +47,18 @@ const cache = new LRUCache<string, string>({
 
 const app = express();
 app.use(compression() as express.RequestHandler);
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", 'data:'],
+      },
+    },
+  }),
+);
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -40,7 +74,14 @@ function setCache(key: string, data: string): void {
   cache.set(key, data);
 }
 
-// Create GET request
+app.get('/api', (req, res, next) => {
+  if (!req.query.username) {
+    res.set('Content-Type', 'text/html');
+    return res.send(renderDemoPage());
+  }
+  next();
+});
+
 app.get('/api', async (req, res) => {
   const {
     username,
@@ -69,7 +110,9 @@ app.get('/api', async (req, res) => {
     return res.send(renderError('Something went wrong', 'Language not found'));
   }
 
-  const cacheKey = `${username}-${combine_all_yearly_contributions}-${limit}`;
+  const queryForCache = { ...req.query };
+  delete queryForCache._t;
+  const cacheKey = JSON.stringify(queryForCache);
 
   const cached = getCached(cacheKey);
   if (cached) {

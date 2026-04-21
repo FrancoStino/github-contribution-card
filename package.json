@@ -43,6 +43,7 @@
     "eslint": "9.26.0",
     "prettier": "^3.8.2",
     "progress-webpack-plugin": "^1.0.16",
+    "raw-loader": "^4.0.2",
     "ts-loader": "^9.5.7",
     "tsc-alias": "^1.8.16",
     "tsconfig-paths-webpack-plugin": "^4.0.0",

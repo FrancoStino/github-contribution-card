@@ -15,7 +15,7 @@ module.exports = {
   },
   devtool: false,
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.html', '.css'],
     plugins: [new TsconfigPathsWebpackPlugin()],
     fallback: {
       util: require.resolve('util'),
@@ -33,6 +33,11 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.(html|css|script)$/,
+        include: /\/api\/demo\//,
+        use: ['raw-loader'],
       },
     ],
   },
