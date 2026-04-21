@@ -112,7 +112,8 @@ app.get('/api', async (req, res) => {
 
   const queryForCache = { ...req.query };
   delete queryForCache._t;
-  const cacheKey = JSON.stringify(queryForCache);
+  const sortedEntries = Object.entries(queryForCache).sort(([a], [b]) => a.localeCompare(b));
+  const cacheKey = JSON.stringify(sortedEntries);
 
   const cached = getCached(cacheKey);
   if (cached) {

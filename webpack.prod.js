@@ -37,7 +37,7 @@ module.exports = {
       {
         test: /\.(html|css|script)$/,
         include: /\/api\/demo\//,
-        use: ['raw-loader'],
+        type: 'asset/source',
       },
     ],
   },

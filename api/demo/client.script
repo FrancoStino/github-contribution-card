@@ -76,6 +76,9 @@ document.querySelectorAll('[id$="_pick"]').forEach((pick) => {
     navigator.clipboard.writeText($(src).value).then(() => {
       $(id).textContent = 'Copied!';
       setTimeout(() => ($(id).textContent = 'Copy'), 1500);
+    }).catch(() => {
+      $(id).textContent = 'Failed';
+      setTimeout(() => ($(id).textContent = 'Copy'), 1500);
     });
   });
 });
