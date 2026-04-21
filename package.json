@@ -8,6 +8,7 @@
     "build": "webpack --mode development --config webpack.common.js",
     "build:action": "webpack --mode production --config webpack.action.js",
     "build:prod": "webpack --config webpack.prod.js",
+    "vercel-build": "webpack --config webpack.prod.js",
     "start": "yarn build:prod && node dist/index.js"
   },
   "repository": {
@@ -15,7 +16,7 @@
     "url": "git+https://github.com/FrancoStino/github-contribution-card.git"
   },
   "author": "FrancoStino",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/FrancoStino/github-contribution-card/issues"
   },

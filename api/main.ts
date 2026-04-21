@@ -126,6 +126,10 @@ app.get('/api', async (req, res) => {
   }
 });
 
+app.get('/', (_req, res) => {
+  res.redirect('/api');
+});
+
 // Export for Vercel serverless — @vercel/node uses this as the handler
 export default app;
 
