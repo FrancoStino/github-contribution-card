@@ -11,7 +11,7 @@
     "build": "webpack --mode development --config webpack.common.js",
     "build:action": "webpack --mode production --config webpack.action.js",
     "build:prod": "webpack --config webpack.prod.js",
-    "vercel-build": "webpack --config webpack.prod.js",
+    "vercel-build": "webpack --config webpack.prod.js && cp dist/index.js index.js",
     "start": "yarn build:prod && node dist/index.js",
     "dev": "concurrently \"webpack --config webpack.prod.js --watch\" \"nodemon --watch dist dist/index.js\""
   },
