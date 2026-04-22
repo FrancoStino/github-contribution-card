@@ -1,5 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "yarn vercel-build",
+  "outputDirectory": ".",
   "functions": {
     "api/index.js": {
       "memory": 512,
