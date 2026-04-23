@@ -42,3 +42,5 @@ output
 action/dist/
 /.idea/
 /.sisyphus
+.vercel
+.env*.local
