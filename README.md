@@ -19,7 +19,11 @@ Paste this into your Markdown — that's it:
 ![My GitHub Contribution Stats](https://github-contribution-card.vercel.app/api?username=YOUR_USERNAME)
 ```
 
+<div align="center">
+
 ![Demo](https://github-contribution-card.vercel.app/api?username=anuraghazra)
+
+</div>
 
 > **Star Ranks**: S+ (10 000+) · S (1 000+) · A+ (500+) · A (100+) · B+ (50+) · B (1+)
 > **Contributor Ranks**: S+ (90+) · S (80+) · A+ (70+) · A (60+) · B+ (50+) · B (1+)
