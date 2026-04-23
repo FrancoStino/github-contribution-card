@@ -3,7 +3,7 @@
   <h1>GitHub Contribution Card</h1>
   <p>Dynamic SVG cards showing your GitHub repository contribution stats</p>
 
-[![Release](https://img.shields.io/badge/Release-1.0.0-blue?style=for-the-badge)](https://github.com/FrancoStino/github-contribution-card/releases)
+[![Release](https://img.shields.io/github/v/release/FrancoStino/github-contribution-card?style=for-the-badge)](https://github.com/FrancoStino/github-contribution-card/releases)
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-000?style=for-the-badge&logo=vercel)](https://vercel.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
@@ -19,7 +19,7 @@ Paste this into your Markdown — that's it:
 ![My GitHub Contribution Stats](https://github-contribution-card.vercel.app/api?username=YOUR_USERNAME)
 ```
 
-![Demo](https://github-contribution-card.vercel.app/api?username=torvalds)
+![Demo](https://github-contribution-card.vercel.app/api?username=anuraghazra)
 
 > **Star Ranks**: S+ (10 000+) · S (1 000+) · A+ (500+) · A (100+) · B+ (50+) · B (1+)
 > **Contributor Ranks**: S+ (90+) · S (80+) · A+ (70+) · A (60+) · B+ (50+) · B (1+)
@@ -311,4 +311,4 @@ This project is licensed under the [MIT License](./LICENSE).
 
 Based on [github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
 by [@anuraghazra](https://github.com/anuraghazra). Original TypeScript implementation
-by [@HwangTaehyun](https://github.com/HwangTaehyun). Refer
+by [@HwangTaehyun](https://github.com/HwangTaehyun).
