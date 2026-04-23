@@ -11,57 +11,63 @@ on:
           - minor
           - major
           - current
+
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.WORKFLOW_TOKEN }}
           fetch-depth: 0
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '24'
-          cache: 'npm'
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
+
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --immutable
+
       - name: Bump version
         id: bump
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
 
-          # Trova il tag stabile precedente (escludi beta) per il changelog
           PREVIOUS_STABLE=$(git tag --list 'v*' | grep -v 'beta' | sort -V | tail -1)
           echo "previous_stable=$PREVIOUS_STABLE" >> $GITHUB_OUTPUT
 
-          # Rimuovi -beta se presente
           if [[ "$CURRENT_VERSION" == *"-beta"* ]]; then
             STABLE_VERSION=$(echo $CURRENT_VERSION | sed 's/-beta\.[0-9]*$//')
             npm version $STABLE_VERSION --no-git-tag-version
             echo "✅ Removed beta suffix: $CURRENT_VERSION -> $STABLE_VERSION"
           fi
 
-          # Bump version
           if [ "${{ github.event.inputs.version }}" = "current" ]; then
             NEW_VERSION="v$(node -p "require('./package.json').version")"
           else
             NEW_VERSION=$(npm version ${{ github.event.inputs.version }} --no-git-tag-version)
           fi
+
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
       - name: Commit and push
         run: |
-          if git diff --quiet package.json package-lock.json; then
+          if git diff --quiet package.json yarn.lock; then
             echo "No changes to commit."
           else
-            git add package.json package-lock.json
+            git add package.json yarn.lock
             git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }}"
           fi
 
@@ -82,6 +88,7 @@ jobs:
             echo "⚠️ Push rejected, rebasing ($RETRY/$MAX_RETRIES)..."
             git pull origin main --rebase
           done
+
       - name: Generate changelog
         id: changelog
         uses: requarks/changelog-action@v1
@@ -89,12 +96,14 @@ jobs:
           token: ${{ secrets.WORKFLOW_TOKEN }}
           fromTag: ${{ steps.bump.outputs.new_version }}
           toTag: ${{ steps.bump.outputs.previous_stable }}
+
       - name: Commit CHANGELOG.md
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: main
           commit_message: 'docs: update CHANGELOG.md for ${{ steps.bump.outputs.new_version }} [skip ci]'
           file_pattern: CHANGELOG.md
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
