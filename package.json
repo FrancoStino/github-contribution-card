@@ -7,14 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode development --config webpack.common.js",
     "build:action": "webpack --mode production --config webpack.action.js",
-    "start": "yarn build && node index.js"
+    "build:prod": "webpack --config webpack.prod.js",
+    "vercel-build": "webpack --config webpack.prod.js",
+    "start": "yarn build:prod && node dist/index.js",
+    "dev": "concurrently \"webpack --config webpack.prod.js --watch\" \"nodemon --watch dist dist/index.js\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FrancoStino/github-contribution-card.git"
   },
   "author": "FrancoStino",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/FrancoStino/github-contribution-card/issues"
   },
@@ -25,9 +28,12 @@
     "compression": "^1.7.4",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.3.2",
     "filereader": "^0.10.3",
+    "helmet": "^8.1.0",
     "image-to-base64": "^2.2.0",
     "lodash": "^4.17.21",
+    "lru-cache": "^11.3.5",
     "node-fetch": "^3.3.2",
     "typescript": "^6.0.2"
   },
@@ -35,7 +41,9 @@
     "@types/express": "^5.0.6",
     "@types/node": "^25.6.0",
     "@vercel/node": "^5.7.4",
+    "concurrently": "^9.2.1",
     "eslint": "9.26.0",
+    "nodemon": "^3.1.14",
     "prettier": "^3.8.2",
     "progress-webpack-plugin": "^1.0.16",
     "ts-loader": "^9.5.7",

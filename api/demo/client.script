@@ -1,0 +1,84 @@
+const $ = (id) => document.getElementById(id);
+
+function buildQuery() {
+  const p = new URLSearchParams();
+  const u = $('username').value.trim();
+  if (!u) return null;
+  p.set('username', u);
+
+  const pairs = [
+    ['theme', $('theme').value],
+    ['locale', $('locale').value],
+    ['order_by', $('order_by').value],
+    ['limit', $('limit').value],
+    ['custom_title', $('custom_title').value],
+    ['hide', $('hide').value],
+    ['title_color', $('title_color').value],
+    ['text_color', $('text_color').value],
+    ['icon_color', $('icon_color').value],
+    ['bg_color', $('bg_color').value],
+    ['border_color', $('border_color').value],
+    ['border_radius', $('border_radius').value],
+    ['line_height', $('line_height').value],
+    ['cache_seconds', $('cache_seconds').value],
+  ];
+  pairs.forEach(([k, v]) => {
+    if (v) p.set(k, v);
+  });
+
+  if ($('hide_title').checked) p.set('hide_title', 'true');
+  if ($('hide_border').checked) p.set('hide_border', 'true');
+  if (!$('hide_contributor_rank').checked) p.set('hide_contributor_rank', 'false');
+  if ($('combine_all').checked) p.set('combine_all_yearly_contributions', 'true');
+
+  return p;
+}
+
+function generate() {
+  const p = buildQuery();
+  if (!p) return;
+
+  p.set('_t', Date.now().toString());
+  const url = location.origin + '/api?' + p.toString();
+
+  $('preview').innerHTML =
+    '<img src="' +
+    url +
+    '" alt="Contribution Card" onerror="this.parentElement.innerHTML=\'<div class=empty-state>Error generating card</div>\'"/>';
+
+  p.delete('_t');
+  const cleanUrl = location.origin + '/api?' + p.toString();
+
+  $('url_output').value = cleanUrl;
+  $('md_output').value = '![GitHub Contribution Card](' + cleanUrl + ')';
+}
+
+$('generate').addEventListener('click', generate);
+$('username').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') generate();
+});
+
+document.querySelectorAll('[id$="_pick"]').forEach((pick) => {
+  const textId = pick.id.replace('_pick', '');
+  pick.addEventListener('input', () => {
+    $(textId).value = pick.value.replace('#', '');
+  });
+  $(textId).addEventListener('input', () => {
+    let v = $(textId).value;
+    if (v && !v.startsWith('#')) v = '#' + v;
+    if (/^#[0-9a-f]{6}$/i.test(v)) pick.value = v;
+  });
+});
+
+['copy_url', 'copy_md'].forEach((id) => {
+  $(id).addEventListener('click', () => {
+    const src = id === 'copy_url' ? 'url_output' : 'md_output';
+    navigator.clipboard.writeText($(src).value).then(() => {
+      $(id).textContent = 'Copied!';
+      setTimeout(() => ($(id).textContent = 'Copy'), 1500);
+    }).catch(() => {
+      $(id).textContent = 'Failed';
+      setTimeout(() => ($(id).textContent = 'Copy'), 1500);
+    });
+  });
+});

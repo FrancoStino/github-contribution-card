@@ -13,8 +13,8 @@
 /build
 /main
 dist/
-index.js
-index.js.map
+/index.js
+/index.js.map
 # misc
 .DS_Store
 .env
@@ -42,3 +42,5 @@ output
 action/dist/
 /.idea/
 /.sisyphus
+.vercel
+.env*.local

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <title>GitHub Contribution Card</title>
+  <style>
+      <!--
+      PLACEHOLDER_CSS-- >
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1>GitHub Contribution Card</h1>
+  <p>Configure and preview your contribution stats card</p>
+</div>
+<div class="container">
+  <div class="panel">
+    <h2>Parameters</h2>
+    <div class="form-row">
+      <label for="username">Username *</label>
+      <input id="username" placeholder="anuraghazra" required type="text" />
+    </div>
+    <div class="section-title">Display</div>
+    <div class="form-row">
+      <label for="theme">Theme</label>
+      <select id="theme">
+        <option value="">default</option>
+        <!--PLACEHOLDER_THEME_OPTIONS-->
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="locale">Locale</label>
+      <select id="locale">
+        <option value="">en</option>
+        <!--PLACEHOLDER_LOCALE_OPTIONS-->
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="order_by">Order by</label>
+      <select id="order_by">
+        <option value="stars">stars</option>
+        <option value="contributions">contributions</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="limit">Limit</label>
+      <input id="limit" placeholder="-1 (all)" type="number" value="" />
+    </div>
+    <div class="form-row">
+      <label for="custom_title">Custom title</label>
+      <input id="custom_title" placeholder="My Stats" type="text" />
+    </div>
+    <div class="form-row">
+      <label for="hide">Hide ranks</label>
+      <input id="hide" placeholder="B,B%2B" type="text" />
+    </div>
+    <div class="form-row">
+      <label><input id="hide_title" type="checkbox" /> Hide title</label>
+    </div>
+    <div class="form-row">
+      <label><input id="hide_border" type="checkbox" /> Hide border</label>
+    </div>
+    <div class="form-row">
+      <label
+      ><input checked id="hide_contributor_rank" type="checkbox" /> Hide contributor
+        rank</label
+      >
+    </div>
+    <div class="form-row">
+      <label
+      ><input id="combine_all" type="checkbox" /> All years contributions</label
+      >
+    </div>
+    <div class="section-title">Custom Colors</div>
+    <div class="form-row">
+      <label for="title_color">Title</label>
+      <input id="title_color" placeholder="ff6b6b" type="text" /><input
+      id="title_color_pick"
+      type="color"
+      value="#2f80ed"
+    />
+    </div>
+    <div class="form-row">
+      <label for="text_color">Text</label>
+      <input id="text_color" placeholder="434d58" type="text" /><input
+      id="text_color_pick"
+      type="color"
+      value="#434d58"
+    />
+    </div>
+    <div class="form-row">
+      <label for="icon_color">Icon</label>
+      <input id="icon_color" placeholder="4c71f2" type="text" /><input
+      id="icon_color_pick"
+      type="color"
+      value="#4c71f2"
+    />
+    </div>
+    <div class="form-row">
+      <label for="bg_color">Background</label>
+      <input id="bg_color" placeholder="fffefe" type="text" /><input
+      id="bg_color_pick"
+      type="color"
+      value="#fffefe"
+    />
+    </div>
+    <div class="form-row">
+      <label for="border_color">Border</label>
+      <input id="border_color" placeholder="e4e2e2" type="text" /><input
+      id="border_color_pick"
+      type="color"
+      value="#e4e2e2"
+    />
+    </div>
+    <div class="section-title">Layout</div>
+    <div class="form-row">
+      <label for="border_radius">Border radius</label>
+      <input id="border_radius" placeholder="4.5" type="number" value="" />
+    </div>
+    <div class="form-row">
+      <label for="line_height">Line height</label>
+      <input id="line_height" placeholder="auto" type="number" value="" />
+    </div>
+    <div class="form-row">
+      <label for="cache_seconds">Cache (s)</label>
+      <input id="cache_seconds" placeholder="14400" type="number" value="" />
+    </div>
+    <div style="margin-top: 1rem; text-align: center">
+      <button class="btn" id="generate">Generate Card</button>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>Preview</h2>
+    <div class="preview-area" id="preview">
+      <div class="empty-state">Enter a username and click Generate</div>
+    </div>
+    <h2 style="margin-top: 1.5rem">URL</h2>
+    <div class="url-row">
+      <textarea class="url-box" id="url_output" readonly rows="2"></textarea>
+      <button class="copy-btn" id="copy_url">Copy</button>
+    </div>
+    <h2 style="margin-top: 1rem">Markdown</h2>
+    <div class="url-row">
+      <textarea class="url-box" id="md_output" readonly rows="2"></textarea>
+      <button class="copy-btn" id="copy_md">Copy</button>
+    </div>
+  </div>
+</div>
+<script>
+  <!--PLACEHOLDER_JS-->
+</script>
+</body>
+</html>
