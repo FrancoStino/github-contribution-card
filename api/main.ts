@@ -9,7 +9,7 @@ import {
 } from '@/common/utils';
 import { fetchContributorStats } from '@/fetchContributorStats';
 import { fetchAllContributorStats } from '@/fetchAllContributorStats';
-import { isLocaleAvailable, availableLocales } from '@/translations';
+import { availableLocales, isLocaleAvailable } from '@/translations';
 import { themes } from 'themes';
 import demoTemplate from './demo/template.html';
 import demoStyles from './demo/styles.css';
@@ -33,7 +33,7 @@ function renderDemoPage(): string {
   ).join('');
 
   return demoTemplate
-    .replace('<!--PLACEHOLDER_CSS-->', demoStyles)
+    .replace('/*PLACEHOLDER_CSS*/', demoStyles)
     .replace('<!--PLACEHOLDER_JS-->', demoScript)
     .replace('<!--PLACEHOLDER_THEME_OPTIONS-->', themeOptions)
     .replace('<!--PLACEHOLDER_LOCALE_OPTIONS-->', localeOptions);
@@ -112,7 +112,9 @@ app.get('/api', async (req, res) => {
 
   const queryForCache = { ...req.query };
   delete queryForCache._t;
-  const sortedEntries = Object.entries(queryForCache).sort(([a], [b]) => a.localeCompare(b));
+  const sortedEntries = Object.entries(queryForCache).sort(([a], [b]) =>
+    a.localeCompare(b),
+  );
   const cacheKey = JSON.stringify(sortedEntries);
 
   const cached = getCached(cacheKey);

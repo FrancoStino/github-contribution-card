@@ -3,7 +3,7 @@ const TsconfigPathsWebpackPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
   output: {
-    path: path.resolve(__dirname),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
   },
   target: 'node',
@@ -36,6 +36,10 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.(css|html)$/,
+        type: 'asset/source',
       },
     ],
   },

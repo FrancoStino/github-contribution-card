@@ -2,12 +2,18 @@
     <!-- Background -->
     <rect x="16" y="16" width="480" height="480" rx="64" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
 
-    <!-- GitHub silhouette -->
-    <g transform="translate(256, 180)" fill="#c9d1d9">
-        <circle cx="0" cy="0" r="48" fill="none" stroke="#c9d1d9" stroke-width="3"/>
-        <circle cx="-13" cy="-8" r="4"/>
-        <circle cx="13" cy="-8" r="4"/>
-        <path d="M-18,16 Q0,24 18,16" fill="none" stroke="#c9d1d9" stroke-width="3" stroke-linecap="round"/>
+    <!-- GitHub Pull Request icon -->
+    <g transform="translate(256, 140) scale(2)"
+       fill="#c9d1d9"
+       stroke="#c9d1d9"
+       stroke-width="3"
+       stroke-linecap="round"
+       stroke-linejoin="round">
+
+        <circle cx="-18" cy="-18" r="5"/>
+        <circle cx="18" cy="18" r="5"/>
+        <path d="M-18 -13 V24" fill="none"/>
+        <path d="M-8 -18 H10 A8 8 0 0 1 18 -10 V8" fill="none"/>
     </g>
 
     <!-- Bar chart -->
