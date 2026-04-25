@@ -6,6 +6,8 @@
 /.pnp
 .pnp.js
 
+.env*
+
 # testing
 /coverage
 
@@ -17,10 +19,6 @@ dist/
 /index.js.map
 # misc
 .DS_Store
-.env
-.env.development.local
-.env.test.local
-.env.production.local
 
 npm-debug.log*
 yarn-debug.log*
@@ -43,4 +41,3 @@ action/dist/
 /.idea/
 /.sisyphus
 .vercel
-.env*.local
