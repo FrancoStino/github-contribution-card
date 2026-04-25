@@ -35,7 +35,7 @@
     "lodash": "^4.17.21",
     "lru-cache": "^11.3.5",
     "node-fetch": "^3.3.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
