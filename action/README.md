@@ -41,7 +41,6 @@ jobs:
           output-file: github-contribution-card.svg
           combine-all-yearly-contributions: 'true'
           hide-contributor-rank: 'false'
-          rate-limit-delay-ms: '100'
 
       - uses: actions4git/add-commit-push@v1
         continue-on-error: true
