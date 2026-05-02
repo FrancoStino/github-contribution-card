@@ -47,7 +47,7 @@
     "prettier": "^3.8.3",
     "progress-webpack-plugin": "^1.0.16",
     "ts-loader": "^9.5.7",
-    "tsc-alias": "^1.8.16",
+    "tsc-alias": "^1.8.17",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "webpack": "^5.106.1",
     "webpack-cli": "^7.0.2"
