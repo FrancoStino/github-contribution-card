@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.0] - 2026-05-02
+### :wrench: Chores
+- [`db42de8`](https://github.com/FrancoStino/github-contribution-card/commit/db42de82e8e931978ddf584a3821322491eed937) - **deps-dev**: bump tsc-alias from 1.8.16 to 1.8.17 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`b30d918`](https://github.com/FrancoStino/github-contribution-card/commit/b30d9186ca16bf5b29fa3a527be2baea7d43d635) - **deps-dev**: bump @vercel/node from 5.7.13 to 5.7.15 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`7c24735`](https://github.com/FrancoStino/github-contribution-card/commit/7c2473563bc1a3808226cefacc900045d48742a0) - **deps**: bump @actions/core from 3.0.0 to 3.0.1 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`3567ede`](https://github.com/FrancoStino/github-contribution-card/commit/3567edee4518c6de033af121f63e93fd1c23690f) - **deps-dev**: bump eslint from 10.2.1 to 10.3.0 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`9123537`](https://github.com/FrancoStino/github-contribution-card/commit/91235373ebf67c47efc37755153fa0f38a657d03) - **deps-dev**: bump webpack from 5.106.1 to 5.106.2 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`fd1cdf0`](https://github.com/FrancoStino/github-contribution-card/commit/fd1cdf0112f44bdab39c674aefaaa96bee711bd5) - bump version to v1.1.0 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v1.0.1] - 2026-04-25
 ### :bug: Bug Fixes
 - [`1977f22`](https://github.com/FrancoStino/github-contribution-card/commit/1977f2239f22e31dee62db93aacd6b03cb9f5d22) - version package.json *(commit by [@FrancoStino](https://github.com/FrancoStino))*
@@ -18,3 +28,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [`de6037a`](https://github.com/FrancoStino/github-contribution-card/commit/de6037a8cab0256a99dce9f9207cf621627f20f6) - bump version to v1.0.1 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
 
 [v1.0.1]: https://github.com/FrancoStino/github-contribution-card/compare/v1.0.0...v1.0.1
+[v1.1.0]: https://github.com/FrancoStino/github-contribution-card/compare/v1.0.1...v1.1.0
