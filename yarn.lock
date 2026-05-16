@@ -623,10 +623,10 @@
     "@types/http-errors" "*"
     "@types/node" "*"
 
-"@vercel/build-utils@13.21.0":
-  version "13.21.0"
-  resolved "https://registry.npmjs.org/@vercel/build-utils/-/build-utils-13.21.0.tgz"
-  integrity sha512-A1vtlzFYbjvxRxhnt94LUxrn9JVX2EuXALi/NFyxNA1M51eGQwI5LZaroNlgIRXdx7LCJxBQEUMKc1fi0aqU/g==
+"@vercel/build-utils@13.25.0":
+  version "13.25.0"
+  resolved "https://registry.yarnpkg.com/@vercel/build-utils/-/build-utils-13.25.0.tgz#15829ff5b75cd17afdd76ac54078b99930461230"
+  integrity sha512-p2wqxi2I95T+g/+uP+Dc/uq2PApW7F9RbE/Vvwp28JY8SoCGHNUs2pxigttgaNDNF6IlUEMOTz+eJvsXToV/1w==
   dependencies:
     "@vercel/python-analysis" "0.11.1"
     cjs-module-lexer "1.2.3"
@@ -655,16 +655,16 @@
     picomatch "^4.0.2"
     resolve-from "^5.0.0"
 
-"@vercel/node@^5.7.15":
-  version "5.7.15"
-  resolved "https://registry.npmjs.org/@vercel/node/-/node-5.7.15.tgz"
-  integrity sha512-o8YtafKgaYsY7/4SRKlrvTx/cEB5o3vQG3/eq5Qo66n4WaFeZV8R8GG+BzSU3SYozasQlQxkbPxedUNF4sZJ8A==
+"@vercel/node@^5.8.2":
+  version "5.8.2"
+  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-5.8.2.tgz#be67bab7b8355491c7f7063ae4e9208c05fddc19"
+  integrity sha512-Wt6KBr0LoIhUuzeH7E8S+1HRlS6oSA+98FJH/59wY2tYoxsHXbx5uiNkSBqBsM0nIwlJWR3B86tm9q9Xi22XdQ==
   dependencies:
     "@edge-runtime/node-utils" "2.3.0"
     "@edge-runtime/primitives" "4.1.0"
     "@edge-runtime/vm" "3.2.0"
     "@types/node" "20.11.0"
-    "@vercel/build-utils" "13.21.0"
+    "@vercel/build-utils" "13.25.0"
     "@vercel/error-utils" "2.1.0"
     "@vercel/nft" "1.5.0"
     "@vercel/static-config" "3.3.0"
