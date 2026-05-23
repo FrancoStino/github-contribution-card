@@ -33,7 +33,7 @@
     "helmet": "^8.1.0",
     "image-to-base64": "^2.2.0",
     "lodash": "^4.17.21",
-    "lru-cache": "^11.3.6",
+    "lru-cache": "^11.5.0",
     "node-fetch": "^3.3.2",
     "typescript": "^6.0.3"
   },
