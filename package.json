@@ -41,7 +41,7 @@
     "@types/express": "^5.0.6",
     "@types/node": "^25.9.1",
     "@vercel/node": "^5.8.8",
-    "concurrently": "^9.2.1",
+    "concurrently": "^10.0.0",
     "eslint": "10.4.0",
     "nodemon": "^3.1.14",
     "prettier": "^3.8.3",
