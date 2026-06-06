@@ -607,19 +607,19 @@
     "@types/http-errors" "*"
     "@types/node" "*"
 
-"@vercel/build-utils@13.26.4":
-  version "13.26.4"
-  resolved "https://registry.yarnpkg.com/@vercel/build-utils/-/build-utils-13.26.4.tgz#15ee51559415ba51d6eae3e8fa8372c8562f7b2a"
-  integrity sha512-0g3ZxtZUJZbt4y0Vu4pkHtu1UN58FbVF9cqGT8T6jHp0EHdLGFj5TVCiME8ALeK4tjPImSmxnKZvvB5yb2hqEw==
+"@vercel/build-utils@13.27.1":
+  version "13.27.1"
+  resolved "https://registry.yarnpkg.com/@vercel/build-utils/-/build-utils-13.27.1.tgz#69c92ff529f11d8bb2106a1ecebea9284f6eab32"
+  integrity sha512-BD9H2U8I/IPGS1c1stSIkdPxBRu6bkCQFqtRjcT2dcdnBawyHXvzTsnnBQhgB3fJVQtgJT47gVZe1oHDmv0Ktg==
   dependencies:
     "@vercel/python-analysis" "0.11.1"
     cjs-module-lexer "1.2.3"
     es-module-lexer "1.5.0"
 
-"@vercel/error-utils@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/@vercel/error-utils/-/error-utils-2.1.0.tgz"
-  integrity sha512-DiJcXBOB9N6QM4d7hYPM9Ck/AUjzBl58XNQPxS74o7CuvIanjzrGgygP/70VsyEASeIJMazk1LrhwcNTR/eZGQ==
+"@vercel/error-utils@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@vercel/error-utils/-/error-utils-2.2.0.tgz#3aaf43cf463c37fc097e016265098c4e85a66fc6"
+  integrity sha512-WFWiRxfPzoYWYifaj4thSKvAaZZwUOqD4k5GINRIgZgCiS2E3iAJbWbIsIZmkQdTecWFHcWGA6q48CjisgpOBA==
 
 "@vercel/nft@1.10.0":
   version "1.10.0"
@@ -639,17 +639,17 @@
     picomatch "^4.0.2"
     resolve-from "^5.0.0"
 
-"@vercel/node@^5.8.8":
-  version "5.8.8"
-  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-5.8.8.tgz#f14ed87899644ea4cdfdfb0c3b5f8da483206541"
-  integrity sha512-+uRT9evnGWUE6klrJJED4fCvlSxNShbIc/UY4FeUzt2sdcy5a5b1IoYlo94RJd7tAY9Jg2lR2cVfGfsnWH81ZA==
+"@vercel/node@^5.8.12":
+  version "5.8.12"
+  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-5.8.12.tgz#ea16f40412ff0b038eec8f80b2fc35c98db41957"
+  integrity sha512-XK2ML9YVdAlZ3BmGTW4jQL0D55ZHeRWKS+CLPSWReDyOBKaC4tTnTL2tp3z76bAs0pfgbT55nplMiX2mneSbLA==
   dependencies:
     "@edge-runtime/node-utils" "2.3.0"
     "@edge-runtime/primitives" "4.1.0"
     "@edge-runtime/vm" "3.2.0"
     "@types/node" "20.11.0"
-    "@vercel/build-utils" "13.26.4"
-    "@vercel/error-utils" "2.1.0"
+    "@vercel/build-utils" "13.27.1"
+    "@vercel/error-utils" "2.2.0"
     "@vercel/nft" "1.10.0"
     "@vercel/static-config" "3.4.0"
     async-listen "3.0.0"
