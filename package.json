@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.0.0",
     "@vercel/node": "^5.8.17",
     "concurrently": "^10.0.3",
     "eslint": "10.5.0",
