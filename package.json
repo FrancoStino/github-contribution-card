@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode development --config webpack.common.js",
     "build:action": "webpack --mode production --config webpack.action.js",
-    "build:prod": "webpack --config webpack.prod.js",
-    "vercel-build": "webpack --config webpack.prod.js",
-    "start": "yarn build:prod && node dist/index.js",
+    "build:prod": "tsc -p tsconfig.server.json --noCheck && tsc-alias -p tsconfig.server.json && node -e \"require('fs').cpSync('api/demo','dist/api/demo',{recursive:true})\"",
+    "vercel-build": "yarn build:prod",
+    "start": "yarn build:prod && node dist/api/main.js",
     "dev": "concurrently \"webpack --config webpack.prod.js --watch\" \"nodemon --watch dist dist/index.js\""
   },
   "repository": {

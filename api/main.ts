@@ -11,9 +11,12 @@ import { fetchContributorStats } from '@/fetchContributorStats';
 import { fetchAllContributorStats } from '@/fetchAllContributorStats';
 import { availableLocales, isLocaleAvailable } from '@/translations';
 import { themes } from 'themes';
-import demoTemplate from './demo/template.html';
-import demoStyles from './demo/styles.css';
-import demoScript from './demo/client.script';
+import fs from 'fs';
+import path from 'path';
+
+const demoTemplate = fs.readFileSync(path.join(__dirname, 'demo/template.html'), 'utf-8');
+const demoStyles = fs.readFileSync(path.join(__dirname, 'demo/styles.css'), 'utf-8');
+const demoScript = fs.readFileSync(path.join(__dirname, 'demo/client.script'), 'utf-8');
 import express from 'express';
 import compression from 'compression';
 import { LRUCache } from 'lru-cache';
