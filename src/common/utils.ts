@@ -1,5 +1,4 @@
 // @ts-check
-// import imageToBase64 from 'image-to-base64';
 import { themes } from '../../themes';
 
 /**

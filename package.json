@@ -2,13 +2,12 @@
   "name": "github-contribution-card",
   "version": "1.1.1",
   "description": "Generate SVG cards showing GitHub contribution statistics",
-  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsx scripts/gen-demo.ts && esbuild api/main.ts --bundle --platform=node --format=cjs --outfile=dist/bundle.js --packages=external --loader:.html=text --loader:.css=text --loader:.script=text --footer:js=\"module.exports = app;\"",
     "build:action": "tsc -p tsconfig.action.json && tsc-alias -p tsconfig.action.json",
     "vercel-build": "rm -rf dist && yarn build",
-    "start": "yarn build && node dist/api/main.js",
+    "start": "yarn build && node dist/bundle.js",
     "dev": "tsx watch api/main.ts"
   },
   "repository": {
@@ -28,24 +27,19 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-rate-limit": "^8.5.2",
-    "filereader": "^0.10.3",
     "helmet": "^8.2.0",
-    "image-to-base64": "^2.2.0",
     "lodash": "^4.17.21",
-    "lru-cache": "^11.5.1",
-    "typescript": "^7.0.2"
+    "lru-cache": "^11.5.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/lodash": "^4.17.24",
     "@types/node": "^26.0.1",
-    "@vercel/node": "^5.8.17",
-    "concurrently": "^10.0.3",
     "esbuild": "^0.28.1",
     "eslint": "10.6.0",
-    "nodemon": "^3.1.14",
     "prettier": "^3.8.4",
     "tsc-alias": "^1.8.17",
-    "tsx": "^4.20.0"
+    "tsx": "^4.20.0",
+    "typescript": "^7.0.2"
   }
 }
