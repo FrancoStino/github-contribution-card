@@ -1,6 +1,6 @@
 // @ts-check
 // import imageToBase64 from 'image-to-base64';
-import { themes } from 'themes';
+import { themes } from '../../themes';
 import fetch from 'node-fetch';
 
 /**
@@ -217,44 +217,7 @@ export const getCardColors = ({
 
   return { titleColor, iconColor, textColor, bgColor, borderColor };
 };
-
-/**
- * @param {string} text
- * @param {number} width
- * @param {number} maxLines
- * @returns {string[]}
- */
-// function wrapTextMultiline(text, width = 59, maxLines = 3) {
-//   const fullWidthComma = '，';
-//   const encoded = encodeHTML(text);
-//   const isChinese = encoded.includes(fullWidthComma);
-
-//   let wrapped = [];
-
-//   if (isChinese) {
-//     wrapped = encoded.split(fullWidthComma); // Chinese full punctuation
-//   } else {
-//     wrapped = wrap(encoded, {
-//       width,
-//     }).split('\n'); // Split wrapped lines to get an array of lines
-//   }
-
-//   const lines = wrapped.map((line) => (line as string).trim()).slice(0, maxLines); // Only consider maxLines lines
-
-//   // Add "..." to the last line if the text exceeds maxLines
-//   if (wrapped.length > maxLines) {
-//     lines[maxLines - 1] += '...';
-//   }
-
-//   // Remove empty lines if text fits in less than maxLines lines
-//   const multiLineText = lines.filter(Boolean);
-//   return multiLineText;
-// }
-
-const noop = () => {};
 // return console instance based on the environment
-const logger = process.env.NODE_ENV !== 'test' ? console : { log: noop, error: noop };
-
 export const CONSTANTS = {
   THIRTY_MINUTES: '1800',
   TWO_HOURS: '7200',
@@ -283,24 +246,6 @@ export class CustomError extends Error {
     this.secondaryMessage = SECONDARY_ERROR_MESSAGES[type] || type;
   }
 }
-
-class MissingParamError extends Error {
-  missedParams: any;
-  secondaryMessage: any;
-  /**
-   * @param {string[]} missedParams
-   * @param {string?=} secondaryMessage
-   */
-  constructor(missedParams, secondaryMessage) {
-    const msg = `Missing params ${missedParams
-      .map((p) => `"${p}"`)
-      .join(', ')} make sure you pass the parameters in URL`;
-    super(msg);
-    this.missedParams = missedParams;
-    this.secondaryMessage = secondaryMessage;
-  }
-}
-
 /**
  * @see https://stackoverflow.com/a/48172630/10629172
  * @param {string} str
@@ -338,30 +283,6 @@ export const measureText = (str, fontSize = 10) => {
       .reduce((cur, acc) => acc + cur) * fontSize
   );
 };
-
-/** @param {string} name */
-const lowercaseTrim = (name) => name.toLowerCase().trim();
-
-/**
- * @template T
- * @param {Array<T>} arr
- * @param {number} perChunk
- * @returns {Array<T>}
- */
-function chunkArray(arr, perChunk) {
-  return arr.reduce((resultArray, item, index) => {
-    const chunkIndex = Math.floor(index / perChunk);
-
-    if (!resultArray[chunkIndex]) {
-      resultArray[chunkIndex] = []; // start a new chunk
-    }
-
-    resultArray[chunkIndex].push(item);
-
-    return resultArray;
-  }, []);
-}
-
 export const getImageBase64FromURL = async (url: string) => {
   const imageURLData = await fetch(url);
   const buffer = await imageURLData.arrayBuffer();

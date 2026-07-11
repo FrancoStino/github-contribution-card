@@ -10,13 +10,14 @@ import {
 import { fetchContributorStats } from '@/fetchContributorStats';
 import { fetchAllContributorStats } from '@/fetchAllContributorStats';
 import { availableLocales, isLocaleAvailable } from '@/translations';
-import { themes } from 'themes';
+import { themes } from '../themes';
 import fs from 'fs';
 import path from 'path';
 
-const demoTemplate = fs.readFileSync(path.join(__dirname, 'demo/template.html'), 'utf-8');
-const demoStyles = fs.readFileSync(path.join(__dirname, 'demo/styles.css'), 'utf-8');
-const demoScript = fs.readFileSync(path.join(__dirname, 'demo/client.script'), 'utf-8');
+const demoDir = path.join(process.cwd(), 'api', 'demo');
+const demoTemplate = fs.readFileSync(path.join(demoDir, 'template.html'), 'utf-8');
+const demoStyles = fs.readFileSync(path.join(demoDir, 'styles.css'), 'utf-8');
+const demoScript = fs.readFileSync(path.join(demoDir, 'client.script'), 'utf-8');
 import express from 'express';
 import compression from 'compression';
 import { LRUCache } from 'lru-cache';

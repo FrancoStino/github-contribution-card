@@ -3,7 +3,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "bundler",
-    "outDir": "./dist",
+    "outDir": "./action/dist",
     "rootDir": ".",
     "declaration": false,
     "noImplicitAny": false,
@@ -13,6 +13,6 @@
       "package": ["./package.json"]
     }
   },
-  "include": ["api/main.ts", "src/**/*", "themes/**/*", "types/**/*"],
-  "exclude": ["node_modules", "action", "output", "dist"]
+  "include": ["action/src/index.ts", "src/**/*", "themes/**/*", "types/**/*"],
+  "exclude": ["node_modules", "api", "output", "dist"]
 }

@@ -5,12 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode development --config webpack.common.js",
-    "build:action": "webpack --mode production --config webpack.action.js",
-    "build:prod": "tsc -p tsconfig.server.json --noCheck && tsc-alias -p tsconfig.server.json && node -e \"require('fs').cpSync('api/demo','dist/api/demo',{recursive:true})\"",
-    "vercel-build": "yarn build:prod",
-    "start": "yarn build:prod && node dist/api/main.js",
-    "dev": "concurrently \"webpack --config webpack.prod.js --watch\" \"nodemon --watch dist dist/index.js\""
+    "build": "tsc -p tsconfig.server.json && tsc-alias -p tsconfig.server.json",
+    "build:action": "tsc -p tsconfig.action.json && tsc-alias -p tsconfig.action.json",
+    "vercel-build": "yarn build",
+    "start": "yarn build && node dist/api/main.js",
+    "dev": "tsx watch api/main.ts"
   },
   "repository": {
     "type": "git",
@@ -35,21 +34,18 @@
     "lodash": "^4.17.21",
     "lru-cache": "^11.5.1",
     "node-fetch": "^3.3.2",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
+    "@types/lodash": "^4.17.24",
     "@types/node": "^26.0.1",
     "@vercel/node": "^5.8.17",
     "concurrently": "^10.0.3",
     "eslint": "10.6.0",
     "nodemon": "^3.1.14",
     "prettier": "^3.8.4",
-    "progress-webpack-plugin": "^1.0.16",
-    "ts-loader": "^9.6.1",
     "tsc-alias": "^1.8.17",
-    "tsconfig-paths-webpack-plugin": "^4.0.0",
-    "webpack": "^5.108.3",
-    "webpack-cli": "^7.1.0"
+    "tsx": "^4.20.0"
   }
 }
