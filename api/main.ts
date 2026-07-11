@@ -182,9 +182,6 @@ app.get('/', (_req, res) => {
   res.redirect('/api');
 });
 
-// Export for Vercel serverless — @vercel/node uses this as the handler
-export default app;
-
 // Start server only in local development (Vercel ignores this in serverless)
 if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
   const port = 9999;
