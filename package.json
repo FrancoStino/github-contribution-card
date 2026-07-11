@@ -5,9 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -p tsconfig.server.json && tsc-alias -p tsconfig.server.json",
+    "build": "tsx scripts/gen-demo.ts && tsc -p tsconfig.server.json && tsc-alias -p tsconfig.server.json && esbuild dist/api/main.js --bundle --platform=node --format=cjs --outfile=api/index.js --packages=external --footer:js=\"module.exports = exports.default || module.exports;\"",
     "build:action": "tsc -p tsconfig.action.json && tsc-alias -p tsconfig.action.json",
-    "vercel-build": "yarn build",
+    "vercel-build": "rm -rf dist && yarn build",
     "start": "yarn build && node dist/api/main.js",
     "dev": "tsx watch api/main.ts"
   },
@@ -33,7 +33,6 @@
     "image-to-base64": "^2.2.0",
     "lodash": "^4.17.21",
     "lru-cache": "^11.5.1",
-    "node-fetch": "^3.3.2",
     "typescript": "^7.0.2"
   },
   "devDependencies": {
@@ -42,6 +41,7 @@
     "@types/node": "^26.0.1",
     "@vercel/node": "^5.8.17",
     "concurrently": "^10.0.3",
+    "esbuild": "^0.28.1",
     "eslint": "10.6.0",
     "nodemon": "^3.1.14",
     "prettier": "^3.8.4",

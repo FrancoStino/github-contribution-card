@@ -11,20 +11,13 @@ import { fetchContributorStats } from '@/fetchContributorStats';
 import { fetchAllContributorStats } from '@/fetchAllContributorStats';
 import { availableLocales, isLocaleAvailable } from '@/translations';
 import { themes } from '../themes';
-import fs from 'node:fs';
-import path from 'node:path';
 import express from 'express';
 import compression from 'compression';
 import { LRUCache } from 'lru-cache';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 
-const demoDir = fs.existsSync(path.join(__dirname, 'demo'))
-  ? path.join(__dirname, 'demo')
-  : path.join(__dirname, '..', '..', 'api', 'demo');
-const demoTemplate = fs.readFileSync(path.join(demoDir, 'template.html'), 'utf-8');
-const demoStyles = fs.readFileSync(path.join(demoDir, 'styles.css'), 'utf-8');
-const demoScript = fs.readFileSync(path.join(demoDir, 'client.script'), 'utf-8');
+import { demoTemplate, demoStyles, demoScript } from '@/demo-content';
 
 const THEME_NAMES = Object.keys(themes);
 const LOCALE_CODES = availableLocales as string[];
@@ -52,6 +45,7 @@ const cache = new LRUCache<string, string>({
 });
 
 const app = express();
+app.set('trust proxy', 1);
 app.use(compression() as express.RequestHandler);
 app.use(
   helmet({

@@ -1,7 +1,6 @@
 // @ts-check
 // import imageToBase64 from 'image-to-base64';
 import { themes } from '../../themes';
-import fetch from 'node-fetch';
 
 /**
  * @param {string} message
