@@ -50,6 +50,6 @@
     "tsc-alias": "^1.8.17",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "webpack": "^5.108.3",
-    "webpack-cli": "^7.1.0"
+    "webpack-cli": "^7.2.1"
   }
 }
