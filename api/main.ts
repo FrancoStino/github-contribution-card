@@ -14,7 +14,9 @@ import { themes } from '../themes';
 import fs from 'fs';
 import path from 'path';
 
-const demoDir = path.join(process.cwd(), 'api', 'demo');
+const demoDir = fs.existsSync(path.join(__dirname, 'demo'))
+  ? path.join(__dirname, 'demo')
+  : path.join(__dirname, '..', '..', 'api', 'demo');
 const demoTemplate = fs.readFileSync(path.join(demoDir, 'template.html'), 'utf-8');
 const demoStyles = fs.readFileSync(path.join(demoDir, 'styles.css'), 'utf-8');
 const demoScript = fs.readFileSync(path.join(demoDir, 'client.script'), 'utf-8');
