@@ -17,6 +17,7 @@
 dist/
 src/demo-content.ts
 server.js
+.vercel/output
 # misc
 .DS_Store
 
