@@ -133,7 +133,7 @@ app.get('/api', async (req, res) => {
     const contributorStats = result.repositoriesContributedTo?.nodes || [];
 
     const cacheSeconds = clampValue(
-      parseInt((cache_seconds as string) || CONSTANTS.FOUR_HOURS, 10),
+      Number.parseInt((cache_seconds as string) || CONSTANTS.FOUR_HOURS, 10),
       CONSTANTS.FOUR_HOURS,
       CONSTANTS.ONE_DAY,
     );
