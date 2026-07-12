@@ -16,8 +16,7 @@
 /main
 dist/
 src/demo-content.ts
-/index.js
-/index.js.map
+server.js
 # misc
 .DS_Store
 

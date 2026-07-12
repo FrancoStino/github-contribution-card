@@ -4,11 +4,11 @@
   "description": "Generate SVG cards showing GitHub contribution statistics",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsx scripts/gen-demo.ts && esbuild api/main.ts --bundle --platform=node --format=cjs --outfile=dist/bundle.js --packages=external --loader:.html=text --loader:.css=text --loader:.script=text --footer:js=\"module.exports = app;\"",
+    "build": "tsx scripts/gen-demo.ts && esbuild src/server.ts --bundle --platform=node --format=cjs --outfile=server.js --packages=external --loader:.html=text --loader:.css=text --loader:.script=text --footer:js=\"module.exports = app;\"",
     "build:action": "tsc -p tsconfig.action.json && tsc-alias -p tsconfig.action.json",
-    "vercel-build": "rm -rf dist && yarn build",
-    "start": "yarn build && node dist/bundle.js",
-    "dev": "tsx watch api/main.ts"
+    "vercel-build": "rm -f server.js && yarn build",
+    "start": "yarn build && node server.js",
+    "dev": "tsx watch src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -34,16 +34,11 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.1.0",
-    "@vercel/node": "^5.8.23",
-    "concurrently": "^10.0.3",
+    "esbuild": "^0.28.1",
     "eslint": "10.6.0",
-    "nodemon": "^3.1.14",
     "prettier": "^3.9.5",
-    "progress-webpack-plugin": "^1.0.16",
-    "ts-loader": "^9.6.2",
     "tsc-alias": "^1.8.17",
-    "tsconfig-paths-webpack-plugin": "^4.0.0",
-    "webpack": "^5.108.4",
-    "webpack-cli": "^7.2.1"
+    "tsx": "^4.20.0",
+    "typescript": "^7.0.2"
   }
 }
