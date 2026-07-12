@@ -12,7 +12,7 @@ import {
 } from '@/common/utils';
 import { getStyles } from '@/getStyles';
 import { statCardLocales } from '@/translations';
-import { Contributor, getContributors } from 'getContributors';
+import { Contributor, getContributors } from '../../getContributors';
 
 const token = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
 
@@ -23,7 +23,7 @@ export type ContributorFetcher = (
   token: string,
 ) => Promise<Contributor[]>;
 
-const createTextNode = ({ imageBase64, name, rank, contributionRank, index, height }) => {
+const createTextNode = ({ imageBase64, name, rank, contributionRank, index }) => {
   const staggerDelay = (index + 3) * 150;
 
   const calculateTextWidth = (text) => {
@@ -135,7 +135,7 @@ export const renderContributorStatsCard = async (
   });
 
   const imageBase64s = await Promise.all(
-    Object.keys(contributorStats).map((key, index) => {
+    Object.keys(contributorStats).map((key) => {
       const url = new URL(contributorStats[key].owner.avatarUrl);
       url.searchParams.append('s', '50');
       return getImageBase64FromURL(url.toString());

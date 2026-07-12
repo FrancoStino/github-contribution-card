@@ -2,15 +2,13 @@
   "name": "github-contribution-card",
   "version": "1.1.1",
   "description": "Generate SVG cards showing GitHub contribution statistics",
-  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode development --config webpack.common.js",
-    "build:action": "webpack --mode production --config webpack.action.js",
-    "build:prod": "webpack --config webpack.prod.js",
-    "vercel-build": "webpack --config webpack.prod.js",
-    "start": "yarn build:prod && node dist/index.js",
-    "dev": "concurrently \"webpack --config webpack.prod.js --watch\" \"nodemon --watch dist dist/index.js\""
+    "build": "tsx scripts/gen-demo.ts && esbuild src/server.ts --bundle --platform=node --format=cjs --outfile=server.js --packages=external --loader:.html=text --loader:.css=text --loader:.script=text --footer:js=\"module.exports = app;\"",
+    "build:action": "esbuild action/src/index.ts --bundle --platform=node --format=cjs --outfile=action/dist/index.js --tsconfig=tsconfig.action.json",
+    "vercel-build": "rm -rf .vercel/output && bash scripts/vercel-build.sh",
+    "start": "yarn build && node server.js",
+    "dev": "tsx watch src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -29,27 +27,18 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-rate-limit": "^8.5.2",
-    "filereader": "^0.10.3",
     "helmet": "^8.2.0",
-    "image-to-base64": "^2.2.0",
     "lodash": "^4.17.21",
-    "lru-cache": "^11.5.1",
-    "node-fetch": "^3.3.2",
-    "typescript": "^6.0.3"
+    "lru-cache": "^11.5.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.1.0",
-    "@vercel/node": "^5.8.23",
-    "concurrently": "^10.0.3",
+    "esbuild": "^0.28.1",
     "eslint": "10.6.0",
-    "nodemon": "^3.1.14",
     "prettier": "^3.9.5",
-    "progress-webpack-plugin": "^1.0.16",
-    "ts-loader": "^9.6.2",
     "tsc-alias": "^1.8.17",
-    "tsconfig-paths-webpack-plugin": "^4.0.0",
-    "webpack": "^5.108.4",
-    "webpack-cli": "^7.2.1"
+    "tsx": "^4.20.0",
+    "typescript": "^7.0.2"
   }
 }

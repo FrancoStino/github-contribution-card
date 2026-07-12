@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import fetch from 'node-fetch';
 
 export interface Contributor {
   login: string;

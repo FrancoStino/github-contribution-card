@@ -10,15 +10,14 @@ import {
 import { fetchContributorStats } from '@/fetchContributorStats';
 import { fetchAllContributorStats } from '@/fetchAllContributorStats';
 import { availableLocales, isLocaleAvailable } from '@/translations';
-import { themes } from 'themes';
-import demoTemplate from './demo/template.html';
-import demoStyles from './demo/styles.css';
-import demoScript from './demo/client.script';
+import { themes } from '../themes';
 import express from 'express';
 import compression from 'compression';
 import { LRUCache } from 'lru-cache';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+
+import { demoTemplate, demoStyles, demoScript } from '@/demo-content';
 
 const THEME_NAMES = Object.keys(themes);
 const LOCALE_CODES = availableLocales as string[];
@@ -46,6 +45,7 @@ const cache = new LRUCache<string, string>({
 });
 
 const app = express();
+app.set('trust proxy', 1);
 app.use(compression() as express.RequestHandler);
 app.use(
   helmet({
@@ -133,7 +133,7 @@ app.get('/api', async (req, res) => {
     const contributorStats = result.repositoriesContributedTo?.nodes || [];
 
     const cacheSeconds = clampValue(
-      parseInt((cache_seconds as string) || CONSTANTS.FOUR_HOURS, 10),
+      Number.parseInt((cache_seconds as string) || CONSTANTS.FOUR_HOURS, 10),
       CONSTANTS.FOUR_HOURS,
       CONSTANTS.ONE_DAY,
     );
@@ -175,9 +175,6 @@ app.get('/api', async (req, res) => {
 app.get('/', (_req, res) => {
   res.redirect('/api');
 });
-
-// Export for Vercel serverless — @vercel/node uses this as the handler
-export default app;
 
 // Start server only in local development (Vercel ignores this in serverless)
 if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {

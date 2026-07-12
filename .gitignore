@@ -15,8 +15,9 @@
 /build
 /main
 dist/
-/index.js
-/index.js.map
+src/demo-content.ts
+server.js
+.vercel/output
 # misc
 .DS_Store
 
@@ -41,3 +42,4 @@ action/dist/
 /.idea/
 /.sisyphus
 .vercel
+.env*.local
