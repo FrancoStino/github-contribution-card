@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsx scripts/gen-demo.ts && esbuild src/server.ts --bundle --platform=node --format=cjs --outfile=server.js --packages=external --loader:.html=text --loader:.css=text --loader:.script=text --footer:js=\"module.exports = app;\"",
-    "build:action": "tsc -p tsconfig.action.json && tsc-alias -p tsconfig.action.json",
+    "build:action": "esbuild action/src/index.ts --bundle --platform=node --format=cjs --outfile=action/dist/index.js",
     "vercel-build": "rm -f server.js && yarn build",
     "start": "yarn build && node server.js",
     "dev": "tsx watch src/server.ts"

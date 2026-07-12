@@ -13,6 +13,6 @@
       "package": ["./package.json"]
     }
   },
-  "include": ["action/src/index.ts", "src/**/*", "themes/**/*", "types/**/*"],
-  "exclude": ["node_modules", "api", "output", "dist"]
+  "include": ["action/src/index.ts", "src/cards/**/*", "src/common/**/*", "src/fetch*.ts", "src/translations.ts", "themes/**/*", "types/**/*"],
+  "exclude": ["node_modules", "output", "dist"]
 }
