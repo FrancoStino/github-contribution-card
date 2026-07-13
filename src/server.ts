@@ -45,7 +45,9 @@ const cache = new LRUCache<string, string>({
 });
 
 const app = express();
-app.set('trust proxy', 1);
+if (process.env.VERCEL) {
+  app.set('trust proxy', 1);
+}
 app.use(compression() as express.RequestHandler);
 app.use(
   helmet({

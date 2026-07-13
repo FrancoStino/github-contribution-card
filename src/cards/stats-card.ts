@@ -204,7 +204,6 @@ export const renderContributorStatsCard = async (
     createTextNode({
       ...transformedContributorStats[key],
       index,
-      lheight,
     }),
   );
 

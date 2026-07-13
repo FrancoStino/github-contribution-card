@@ -4,11 +4,11 @@
   "description": "Generate SVG cards showing GitHub contribution statistics",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsx scripts/gen-demo.ts && esbuild src/server.ts --bundle --platform=node --format=cjs --outfile=server.js --packages=external --loader:.html=text --loader:.css=text --loader:.script=text --footer:js=\"module.exports = app;\"",
+    "build": "tsx scripts/gen-demo.ts && esbuild src/server.ts --bundle --platform=node --format=cjs --outfile=server.js --loader:.html=text --loader:.css=text --loader:.script=text --footer:js=\"module.exports = app;\"",
     "build:action": "esbuild action/src/index.ts --bundle --platform=node --format=cjs --outfile=action/dist/index.js --tsconfig=tsconfig.action.json",
     "vercel-build": "rm -rf .vercel/output && bash scripts/vercel-build.sh",
     "start": "yarn build && node server.js",
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx scripts/gen-demo.ts && tsx watch src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/node": "^26.1.0",
+    "@types/node": "^22.0.0",
     "esbuild": "^0.28.1",
     "eslint": "10.6.0",
     "prettier": "^3.9.5",
