@@ -2,7 +2,6 @@
 
 ## Directory Layout
 
-```
 github-contribution-card/
 ├── action/                   # Docker-based GitHub Action
 │   ├── src/
@@ -164,8 +163,7 @@ The build process involves two steps:
 2. **esbuild**: Bundles `src/server.ts` → `server.js` (CJS, Node, external packages, HTML/CSS/JS loaders, footer `module.exports = app` for Vercel compatibility)
 
 For the GitHub Action:
-1. **`scripts/gen-demo.ts`** (same step, shared with server build)
-2. **esbuild**: Bundles `action/src/index.ts` → `action/dist/index.js` (CJS, Node, uses `tsconfig.action.json`)
+1. **esbuild**: Bundles `action/src/index.ts` → `action/dist/index.js` (CJS, Node, uses `tsconfig.action.json`)
 
 For Vercel deployment:
 1. `yarn vercel-build` → runs `yarn build` + `scripts/vercel-build.sh` → creates `.vercel/output/functions/index.func/` with Node.js 22.x runtime config
