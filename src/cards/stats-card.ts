@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { calculateContributionRank } from '@/calculateContributionRank';
 import { calculateRank } from '@/calculateRank';
 import { Card } from '@/common/Card';
@@ -50,7 +50,7 @@ const createTextNode = ({ imageBase64, name, rank, contributionRank, index }) =>
         ${rank}
        </text>`;
 
-  let rankItems = _.isEmpty(contributionRank)
+  let rankItems = isEmpty(contributionRank)
     ? `
     <g data-testid="rank-circle" transform="translate(${offset}, 0)">
       <circle class="rank-circle-rim" cx="12.5" cy="12.5" r="14" />
