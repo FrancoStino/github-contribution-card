@@ -5,7 +5,7 @@
 **Overall:** Express-based HTTP API with serverless deployment, generating dynamic SVG cards from GitHub GraphQL/REST API data.
 
 **Key Characteristics:**
-- Single-endpoint REST API (`/api`) serving SVG images or an HTML demo page
+- Single-endpoint REST API (`/api`) serving SVGs or an HTML demo page
 - Two data-fetching strategies: current-year only (`fetchContributorStats`) vs. all-years with recursive time-range splitting (`fetchAllContributorStats`)
 - Template-based SVG rendering via string concatenation (no DOM library)
 - Dual deployment targets: Vercel serverless function and Docker-based GitHub Action sharing the same core rendering pipeline
