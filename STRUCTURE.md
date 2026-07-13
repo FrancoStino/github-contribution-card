@@ -2,7 +2,6 @@
 
 ## Directory Layout
 
-```
 github-contribution-card/
 ├── action/                   # Docker-based GitHub Action
 │   ├── src/
