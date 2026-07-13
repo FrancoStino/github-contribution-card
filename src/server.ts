@@ -48,7 +48,7 @@ const app = express();
 // Trust proxy when behind a reverse proxy (Vercel, nginx, Caddy, etc.)
 // Set TRUST_PROXY=1 env var for self-hosted deployments behind a proxy.
 // Disabled by default to prevent IP spoofing on direct connections.
-if (process.env.TRUST_PROXY || process.env.VERCEL) {
+if (process.env.TRUST_PROXY === '1' || process.env.TRUST_PROXY === 'true' || process.env.VERCEL) {
   app.set('trust proxy', 1);
 }
 app.use(compression() as express.RequestHandler);
