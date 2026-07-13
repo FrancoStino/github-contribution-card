@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "ignoreDeprecations": "6.0",
     "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "moduleResolution": "bundler",
@@ -27,7 +26,6 @@
     "allowSyntheticDefaultImports": true,
     "module": "esnext",
     "typeRoots": ["./node_modules/@types", "types"],
-    "baseUrl": ".",
     "paths": {
       "@*": ["./src*"],
       "package": ["./package.json"]

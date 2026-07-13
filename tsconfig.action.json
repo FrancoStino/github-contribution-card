@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "bundler",
+    "outDir": "./action/dist",
+    "rootDir": ".",
+    "declaration": false,
+    "noImplicitAny": false,
+    "paths": {
+      "@*": ["./src*"],
+      "themes": ["./themes"],
+      "package": ["./package.json"]
+    }
+  },
+  "include": ["action/src/index.ts", "src/cards/**/*", "src/common/**/*", "src/fetch*.ts", "src/translations.ts", "themes/**/*", "types/**/*"],
+  "exclude": ["node_modules", "output", "dist"]
+}

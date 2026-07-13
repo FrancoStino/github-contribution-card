@@ -1,5 +1,4 @@
 import axios from 'axios';
-import _ from 'lodash';
 
 const MAX_REPOS_PER_QUERY = 100;
 
@@ -248,16 +247,20 @@ export async function fetchAllContributorStats(username: string) {
   const allContributions = yearlyContributions.flat();
 
   // Group by repository and sum contributions
-  const nodes = _.chain(allContributions)
-    .groupBy('nameWithOwner')
-    .map((contributions) => {
-      const totalCount = _.sumBy(contributions, 'contributions');
-      return {
-        ...contributions[0].repository,
-        numOfMyContributions: totalCount,
-      };
-    })
-    .value();
+  const grouped: Record<string, typeof allContributions> = {};
+  for (const item of allContributions) {
+    const key = item.nameWithOwner;
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(item);
+  }
+
+  const nodes = Object.entries(grouped).map(([_, contributions]) => {
+    const totalCount = contributions.reduce((sum, c) => sum + c.contributions, 0);
+    return {
+      ...contributions[0].repository,
+      numOfMyContributions: totalCount,
+    };
+  });
 
   return {
     id,

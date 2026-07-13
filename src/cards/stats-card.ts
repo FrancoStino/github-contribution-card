@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { calculateContributionRank } from '@/calculateContributionRank';
 import { calculateRank } from '@/calculateRank';
 import { Card } from '@/common/Card';
@@ -12,7 +12,7 @@ import {
 } from '@/common/utils';
 import { getStyles } from '@/getStyles';
 import { statCardLocales } from '@/translations';
-import { Contributor, getContributors } from 'getContributors';
+import { Contributor, getContributors } from '../../getContributors';
 
 const token = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
 
@@ -23,7 +23,7 @@ export type ContributorFetcher = (
   token: string,
 ) => Promise<Contributor[]>;
 
-const createTextNode = ({ imageBase64, name, rank, contributionRank, index, height }) => {
+const createTextNode = ({ imageBase64, name, rank, contributionRank, index }) => {
   const staggerDelay = (index + 3) * 150;
 
   const calculateTextWidth = (text) => {
@@ -50,7 +50,7 @@ const createTextNode = ({ imageBase64, name, rank, contributionRank, index, heig
         ${rank}
        </text>`;
 
-  let rankItems = _.isEmpty(contributionRank)
+  let rankItems = isEmpty(contributionRank)
     ? `
     <g data-testid="rank-circle" transform="translate(${offset}, 0)">
       <circle class="rank-circle-rim" cx="12.5" cy="12.5" r="14" />
@@ -135,7 +135,7 @@ export const renderContributorStatsCard = async (
   });
 
   const imageBase64s = await Promise.all(
-    Object.keys(contributorStats).map((key, index) => {
+    Object.keys(contributorStats).map((key) => {
       const url = new URL(contributorStats[key].owner.avatarUrl);
       url.searchParams.append('s', '50');
       return getImageBase64FromURL(url.toString());
@@ -204,7 +204,6 @@ export const renderContributorStatsCard = async (
     createTextNode({
       ...transformedContributorStats[key],
       index,
-      lheight,
     }),
   );
 
