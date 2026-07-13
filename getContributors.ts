@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export interface Contributor {
   login: string;
   contributions: number;
