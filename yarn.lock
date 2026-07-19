@@ -1635,10 +1635,10 @@ toidentifier@~1.0.1:
   resolved "https://registry.npmjs.org/toidentifier/-/toidentifier-1.0.1.tgz"
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
 
-tsc-alias@^1.8.17:
-  version "1.8.17"
-  resolved "https://registry.npmjs.org/tsc-alias/-/tsc-alias-1.8.17.tgz"
-  integrity sha512-EIduCZHqbNwPm8BZYfq1aD7BQ697A4h6uSGMOFQfYGoQwfrYFTKwYfy9Bv42YxHkduVBcn9Zx0DkX111DKskyg==
+tsc-alias@^1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/tsc-alias/-/tsc-alias-1.9.1.tgz#071456501f1ef87e61d1e6afe34e051dbf8ce01f"
+  integrity sha512-sFZdVFthH8uvdplPJrOYGOHcxu6UPtcAcY678JPwEQiMzgLZYFO7Qc/rzELp7ingTc+OxtzH6n+8Pn2eVQep6w==
   dependencies:
     chokidar "^3.5.3"
     commander "^9.0.0"
