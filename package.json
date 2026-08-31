@@ -37,7 +37,7 @@
     "esbuild": "^0.28.1",
     "eslint": "10.9.1",
     "prettier": "^3.9.6",
-    "tsc-alias": "^1.9.1",
+    "tsc-alias": "^1.9.2",
     "tsx": "^4.23.12",
     "typescript": "^7.0.2"
   }
